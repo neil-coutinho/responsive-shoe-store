@@ -5,6 +5,7 @@ import { COLORS } from '../../constants';
 
 import VisuallyHidden from '../VisuallyHidden';
 import Icon from '../Icon';
+import SuperHeader from '../SuperHeader';
 
 const SearchInput = ({ label, ...delegated }) => {
   return (
@@ -18,6 +19,15 @@ const SearchInput = ({ label, ...delegated }) => {
 
 const Label = styled.label`
   position: relative;
+
+  /* ${SuperHeader} & { // reverse css nesting to prevent reaching in
+    
+    @media ${({theme}) => theme.QUERIES.tabletAndSmaller} {
+      display: none;
+    }
+    
+  } */
+
 `;
 
 const Input = styled.input`
