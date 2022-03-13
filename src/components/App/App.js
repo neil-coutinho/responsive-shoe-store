@@ -24,6 +24,13 @@ console.log(THEME)
 const Main = styled.main`
   padding: 64px 32px;
 
+  @media ${({ theme }) => theme.QUERIES.tabletAndSmaller} {
+    padding: 48px 32px;
+
+  }
+
+ 
+
  
 `;
 
