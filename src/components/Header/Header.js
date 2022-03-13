@@ -5,6 +5,8 @@ import { COLORS, WEIGHTS } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import UnstyledButton from '../UnstyledButton';
+import Icon from '../Icon';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -18,17 +20,30 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Side>
+        <LogoWrapper>
           <Logo />
-        </Side>
-        <Nav>
+        </LogoWrapper>
+        <DesktopNav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
-        </Nav>
+        </DesktopNav>
+        <MobileActions>
+          <UnstyledButton>
+            <Icon id="shopping-bag" strokeWidth={1} />
+          </UnstyledButton>
+
+          <UnstyledButton>
+            <Icon id="search" strokeWidth={1} />
+          </UnstyledButton>
+
+          <UnstyledButton>
+            <Icon id="menu" strokeWidth={1} />
+          </UnstyledButton>
+        </MobileActions>
         <Side />
       </MainHeader>
 
@@ -47,21 +62,65 @@ const MainHeader = styled.div`
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
 
-  @media ${({theme}) => theme.QUERIES.tabletAndSmaller} {
+  @media ${({ theme }) => theme.QUERIES.tabletAndSmaller} {
    border-top: 4px solid ${COLORS.gray[900]};
+   align-items: center;
+   justify-content: space-between;
 
   }
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+
+  @media ${({ theme }) => theme.QUERIES.tabletAndSmaller} {
+  display: none;
+
+  }
 `;
+
+const MobileActions = styled.div`
+  display: none;
+
+  @media ${({ theme }) => theme.QUERIES.tabletAndSmaller} {
+    display: flex;
+    gap:32px;
+
+  }
+
+  @media ${({ theme }) => theme.QUERIES.phoneAndSmaller} {
+    gap:24px;
+
+  }
+
+`;
+
 
 const Side = styled.div`
   flex: 1;
+
+  @media ${({ theme }) => theme.QUERIES.tabletAndSmaller} {
+    display: none;
+   
+
+  }
 `;
+
+
+const LogoWrapper = styled(Side)`
+  flex: 1;
+
+  @media ${({ theme }) => theme.QUERIES.tabletAndSmaller} {
+    display: flex;
+    flex: revert;
+   
+
+  }
+`;
+
+
 
 const NavLink = styled.a`
   font-size: 1.125rem;
