@@ -59,7 +59,7 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
+  /* height: 72px; */
   border-bottom: 1px solid ${COLORS.gray[300]};
 
   @media ${({ theme }) => theme.QUERIES.tabletAndSmaller} {
@@ -72,7 +72,12 @@ const MainHeader = styled.div`
 
 const DesktopNav = styled.nav`
   display: flex;
-  gap: 48px;
+  /* gap: 48px; */
+  gap: clamp(
+    1rem,
+    10.5vw - 4.75rem,
+    3rem
+  );
   margin: 0px 48px;
 
   @media ${({ theme }) => theme.QUERIES.tabletAndSmaller} {
